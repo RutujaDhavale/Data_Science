@@ -1,0 +1,14 @@
+h1 ,sub{
+    background-color: #0a2351;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+    background-color: black;
+}
+
+ul,
+li {
+    color: white;
+}

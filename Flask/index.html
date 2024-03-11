@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Regex Matcher</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="static/style.css" rel="stylesheet">
+</head>
+<body style="background-color: black;">
+    <h1>regular<sub>matcher</sub></h1>
+    <br>
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-md-6">
+                <form action="/match" method="post">
+                    <div class="form-group">
+                        <h6 style="color:white;">REGULAR EXPRESSION</h6>
+                        <div class="form-group">
+                            <label for="regex_pattern" style="color:white;">Regex Pattern:</label>
+                            <input type="text" class="form-control" id="regex_pattern" name="regex_pattern" placeholder=": /insert your regular expression here" style="background-color:#F0F8FF;  border: 1px solid white; color:black;">
+                        </div>
+                        <label for="test_string" style="color:white;">Test String:</label>
+                        <textarea class="form-control" id="test_string" name="test_string" rows="4" cols="50" placeholder="insert your test string here" style="background-color:#F0F8FF;  border: 1px solid white; color:black;"></textarea>
+                    </div> 
+                    <button type="submit" class="btn btn-primary">Match</button>
+                </form>
+                {% if matches %}
+                <h2 style="color:white;">Matches ({{ count }}):</h2>
+                <ul>
+                    {% for match in matches %}
+                        <li>{{ match }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            <div class="col-md-6">
+                <h6 style="color:white;">Email Validation</h6>
+                <form id="emailForm">
+                    <div class="form-group">
+                        <label for="email" style="color: white;">Email:</label>
+                        <input type="email" class="form-control" id="email" name="email" style="background-color:#F0F8FF;  border: 1px solid white; color:black;"">
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="validateEmail()">Validate Email</button>
+                    <p style="color:white;" id="validationResult"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and jQuery (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function validateEmail() {
+            var email = document.getElementById('email').value;
+            fetch('/validate-email', {
+                method: 'POST',
+                body: new URLSearchParams({email: email}),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('validationResult').innerText = data.valid ? 'Valid email' : 'Invalid email';
+            });
+        }
+    </script>
+</body>
+</html>

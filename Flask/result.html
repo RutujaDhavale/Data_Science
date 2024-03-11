@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Regex Matcher - Results</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="static/style.css" rel="stylesheet">
+</head>
+<body style="background-color: black;">
+    <h1>Regex Matcher - Results</h1>
+    <br>
+    <div class="container">
+        {% if matches %}
+        <h2 style="color: white;">Matches ({{ count }}):</h2>
+        <ul>
+            {% for match in matches %}
+                <li>{{ match }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p style="color: white;">No matches found.</p>
+    {% endif %}
+    <a href="/" class="btn btn-primary">Back to input form</a>
+</div>
+
+    <!-- Bootstrap JS and jQuery (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
