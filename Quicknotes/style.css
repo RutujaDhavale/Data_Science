@@ -1,0 +1,123 @@
+.body{
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0%;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding: 10px;  }
+  
+h1{
+  color:black;
+  text-align:center;
+  border: 5px solid  #04AA6D;
+}
+form{
+  margin-top: 0px;
+  padding-left: 60px;
+  padding-top: 2px;
+  padding-right: 10px;
+  justify-content: center;
+  display: flex;
+  margin: 40px 50px; 
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width:100%;
+
+  
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+.centered-table {
+  margin: 0 auto;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+
+}
+
+td, th,tr {
+  border: 1px solid #dddddd;
+  text-align: center;
+  color:black;
+} 
+*{
+  background-color:white;
+}
+.row {
+  display: flex;
+}
+
+/* Create two equal columns that sits next to each other */
+.column {
+  flex: 50%;
+  padding: 20px;
+  height: 300px; 
+}
+.button-container {
+  display: flex;
+  align-items: center;
+  padding-left:20%;
+}
+
+.delete-button, .edit-button {
+  margin-right: 5px; /* Add margin between buttons */
+}
+
+.edit-button {
+  background-color: #007bff; /* Blue color for edit button */
+  color: white; /* Text color */
+  border: none; /* No border */
+  padding: 5px 10px; /* Padding around the text */
+  font-size: 14px; /* Font size of the text */
+  cursor: pointer; /* Cursor style on hover */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.edit-button:hover {
+  background-color: #0056b3; /* Darker blue color on hover */
+}
+
+.delete-button {
+  background-color: #dc3545; /* Red color for delete button */
+  color: white; /* Text color */
+  border: none; /* No border */
+  padding: 5px 10px; /* Padding around the text */
+  font-size: 14px; /* Font size of the text */
+  cursor: pointer; /* Cursor style on hover */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.delete-button:hover {
+  background-color: #c82333; /* Darker red color on hover */
+}
+
+.button {
+background-color: #04AA6D;
+border: none;
+color: white;
+padding: 15px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 4px 2px;
+cursor: pointer;
+margin-top:10px;
+width:200px;
+height:50px;
+margin-left: 30%;
+}
+img {
+width: 50px;
+height: 50px;
+}

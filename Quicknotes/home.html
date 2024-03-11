@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="center">
+        <h1 style="background-color:#04AA6D;">QuickNotes</h1>
+    </div>
+    <div class="row">
+        <div class="column" >
+            <h1>Notes</h1>
+            <table>
+                    <tr>
+                        <th>Sr.no</th>
+                        <th>Notes</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                    {% for note in notes%}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>
+                            <span class="note-text" onclick="editNote(this, '{{ note }}')" style="color:black">{{ note }}</span>
+                            <textarea class="edit-note" style="display:none;" rows="4" cols="50" style="color:black;"></textarea>
+                            </td>
+                        <td>{{ current_date }}</td>
+                        <td>
+                        <div class="button-container">
+                            <button class="edit-button" onclick="toggleEdit(this)">Update</button>
+                            <form action="/" method="POST">
+                                <input type="hidden" name="note_id" value="{{ loop.index0 }}">
+                                <input type="hidden" name="action" value="delete">
+                                <button class="delete-button">Delete</button>
+                             </form>
+                        </div>
+                    
+                      </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+            <p>{{ message }}</p>
+
+        </div>
+        <div class="column" >
+           <h2 style="text-align: center; color:black;">Add note</h2>
+            <form style="display: flex; flex-direction: column; justify-content: flex-end;" action="/" method="POST">
+                <textarea id="note" name="note" rows="10" cols="50" style="font-size:large; color:black;">{{ edit_note }}</textarea>
+                <button class="button">Add Note</button>
+            </form>
+        </div>
+
+</body>
+<script>
+    function toggleEdit(button) {
+        var row = button.closest('tr');
+        var noteText = row.querySelector('.note-text');
+        var editNote = row.querySelector('.edit-note');
+        noteText.style.display = 'none';
+        editNote.style.display = 'block';
+        editNote.value = noteText.textContent.trim();
+    }
+
+    function editNote(span, note) {
+        var row = span.closest('tr');
+        var noteText = row.querySelector('.note-text');
+        var editNote = row.querySelector('.edit-note');
+        noteText.style.display = 'none';
+        editNote.style.display = 'block';
+        editNote.value = note.trim();
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var editNotes = document.querySelectorAll('.edit-note');
+        editNotes.forEach(function (editNote) {
+            editNote.addEventListener('blur', function () {
+                var row = this.closest('tr');
+                var noteText = row.querySelector('.note-text');
+                noteText.textContent = this.value;
+                noteText.style.display = 'inline';
+                this.style.display = 'none';
+            });
+        });
+    });
+</script>
+
+</html>
