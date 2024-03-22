@@ -1,0 +1,39 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+    <script>
+        function validateForm() {
+            var textareaValue = document.querySelector('textarea[name="data"]').value.trim();
+            if (textareaValue === '') {
+                alert('Please enter text to predict.');
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center align-items-center" style="height: 100vh;">
+            <div class="col-md-6">
+                <div class="card">
+                    <h1 class="card-title text-center">Real-time Flipkart Product Review Analysis</h1>
+                    <div class="card-body">
+                        <form action="/prediction" method="POST" onsubmit="return validateForm()">
+                            <div class="mb-3">
+                                <textarea name="data" class="form-control" rows="5" placeholder="Enter text to predict"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Predict</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
